@@ -1,0 +1,7 @@
+.grid.place-content-center.mt-40
+  %h1 Articles
+  %ul
+    - @articles.each do |article|
+      %li
+        %a{:href => "/articles/#{article.id}"}
+          = article.title
