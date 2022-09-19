@@ -1,5 +1,14 @@
 .grid.justify-center.mt-40
   %h1
     = @article.title 
+  %br
   %p
     = @article.body
+  %br
+  = link_to "Edit", edit_article_path(@article)
+  %br
+  = link_to article_path(@article), method: :delete, class: "block mx-auto mt-5", form: {data: {turbo_confirm: 'Are you sure?'}} do
+    .bg-red-500.py-2.px-3.rounded-md.cursor-pointer.ml-auto.hover:bg-red-600.text-white.font-bold.text-2xl
+      Delete
+  %br
+  = link_to "Back", articles_path
