@@ -1,10 +1,11 @@
 .grid.gap-6.text-center.m-auto.p-2
   %h1.font-bold.text-2xl Articles
 
-  %ul.border-2
+  %ul
     - @articles.each do |article|
       - unless article.archived?
-        = link_to article.title, article
+        .border-2.rounded-md.m-4  
+          = link_to article.title, article
   %br
   
     %ul.bg-green-400.rounded-md

@@ -1,21 +1,22 @@
 .grid.gap-4.p-2.m-auto.container
   
   .border-2.container.text-center.rounded-md
-    %strong Title: 
     %p 
       = @article.title 
     %br
       = @article.body
   
   .grid.grid-cols-3.text-center
-    .rounded-md.bg-green-500.text-white.mr-2
-      = link_to "Edit", edit_article_path(@article)
+    = link_to edit_article_path(@article) do
+      .rounded-md.bg-green-500.text-white.mr-2
+        Edit
     
-    .rounded-md.bg-blue-500.text-white
-      = link_to "Back", articles_path
+    = link_to articles_path do 
+      .rounded-md.bg-blue-500.text-white
+        Back
     
-    .bg-red-500.text-white.rounded-md.ml-2
-      = link_to article_path(@article), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} do
+    = link_to article_path(@article), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} do
+      .bg-red-500.text-white.rounded-md.ml-2
         Delete
 
   = render @article.comments
