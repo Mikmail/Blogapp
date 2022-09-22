@@ -9,5 +9,8 @@
   = article.errors.full_messages_for(:body).each do |message|
     = message
 
+  = f.label :status
+  = f.select :status, ['public', 'private', 'archived'], selected: 'public'
+
   = f.submit
 

@@ -1,11 +1,12 @@
-%strong Comments:
-%br 
-  = @article.comments.each do |comment|
-    %strong Name: 
-    %p 
-      = comment.commenter
-    %br 
-    %strong Comment: 
-    %p
-      = comment.body
-    %br
+.grid.gap-4.p-2.container
+  .border-2.rounded-md.grid.gap-2
+    - @article.comments.each do |comment|
+      - unless comment.archived?
+        %h1.font-bold.text-1xl
+          = comment.commenter
+        %h2.text-l
+          = comment.body
+
+  .grid-cols-3.text-center.bg-red-500.text-white.rounded-md
+    = link_to [comment.article, comment], method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} do
+      Delete
