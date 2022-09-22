@@ -1,38 +1,23 @@
-.grid.justify-center.mt-40
-  %strong Title: 
-  %p 
-    = @article.title 
+.grid.justify-center.m-20.bg-gray-400
+  .border-2
+    %strong Title: 
+    %p 
+      = @article.title 
+    %br
+    %strong Text: 
+    %p
+      = @article.body
+    %br
+  .border-2
+    = link_to "Edit", edit_article_path(@article)
   %br
-  %strong Text: 
-  %p
-    = @article.body
-  %br
-  = link_to "Edit", edit_article_path(@article)
-  %br
-  = link_to article_path(@article), method: :delete, class: "block mx-auto mt-5", form: {data: {turbo_confirm: 'Are you sure?'}} do
-    .bg-red-500.py-2.px-3.rounded-md.cursor-pointer.ml-auto.hover:bg-red-600.text-white.font-bold.text-2xl
+  .border-2
+    = link_to article_path(@article), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} do
       Delete
   %br
-  = link_to "Back", articles_path
-  %br 
+  .border-2.rounded-md.border-black
+    = link_to "Back", articles_path
   %br
-  %strong Comments 
-  %br 
-    = @article.comments.each do |comment|
-      %strong Name: 
-      %p 
-        = comment.commenter
-      %br 
-      %strong Comment: 
-      %p
-        = comment.body
-  %h1 Add a comment: 
-  %br 
-  = form_with model: [ @article, @article.comments.build ] do |f|
-    = f.label :commenter 
-    = f.text_field :commenter
-
-    = f.label :body 
-    = f.text_area :body
-
-    = f.submit 
+  = render @article.comments
+  %br
+  = render 'comments/form'

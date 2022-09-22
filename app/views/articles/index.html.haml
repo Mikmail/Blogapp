@@ -3,7 +3,8 @@
   %br
   %ul
     - @articles.each do |article|
-      = link_to article.title, article
+      unless article.archived?
+        = link_to article.title, article
   %br
   
     %ul.border-4.bg-green-400

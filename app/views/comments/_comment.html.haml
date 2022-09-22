@@ -1,0 +1,11 @@
+%strong Comments:
+%br 
+  = @article.comments.each do |comment|
+    %strong Name: 
+    %p 
+      = comment.commenter
+    %br 
+    %strong Comment: 
+    %p
+      = comment.body
+    %br
