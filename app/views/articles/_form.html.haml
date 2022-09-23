@@ -1,16 +1,20 @@
-= form_with model: @article do |f|
-  = f.label :title 
-  = f.text_field :title 
-  = article.errors.full_messages_for(:title).each do |message|
-    = message
+.grid.gap-4.p-2.text-center
+  = form_with model: @article do |f|
+    = f.label :title 
+    .text-black
+      = f.text_field :title 
+    = article.errors.full_messages_for(:title).each do |message|
+      = message
 
-  = f.label :body 
-  = f.text_area :body
-  = article.errors.full_messages_for(:body).each do |message|
-    = message
+    = f.label :body 
+    .text-black
+      = f.text_area :body
+    = article.errors.full_messages_for(:body).each do |message|
+      = message
 
-  = f.label :status
-  = f.select :status, ['public', 'private', 'archived'], selected: 'public'
+    = f.label :status
+    .text-black
+      = f.select :status, ['public', 'private', 'archived'], selected: 'public'
 
-  = f.submit
+    = f.submit class: "m-6 bg-green-500 rounded-md p-1"
 
