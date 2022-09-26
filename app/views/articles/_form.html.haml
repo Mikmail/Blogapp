@@ -3,14 +3,10 @@
     = f.label :title 
     .text-black
       = f.text_field :title 
-    = article.errors.full_messages_for(:title).each do |message|
-      = message
 
     = f.label :body 
     .text-black
       = f.text_area :body
-    = article.errors.full_messages_for(:body).each do |message|
-      = message
 
     = f.label :status
     .text-black
